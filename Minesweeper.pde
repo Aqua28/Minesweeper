@@ -83,14 +83,15 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        //your code here
+        
+
     }
 
-    public void draw () 
+    public void draw() 
     {    
         if (marked)
             fill(0);
-         else if( clicked && bombs.contains(this) ) 
+        else if( clicked && bombs.contains(this) ) 
              fill(255,0,0);
         else if(clicked)
             fill( 200 );
@@ -101,6 +102,7 @@ public class MSButton
         fill(0);
         text(label,x+width/2,y+height/2);
     }
+
     public void setLabel(String newLabel)
     {
         label = newLabel;
@@ -114,9 +116,10 @@ public class MSButton
     public int countBombs(int row, int col)
     {
         int numBombs = 0;
-        //your code here
+        if(isValid(row, col) ==true && bombs.contains(buttons[row][col]))
+            numBombs++;
         return numBombs;
-    }
+        }
 }
 
 
