@@ -25,10 +25,12 @@ void setup ()
 }
 public void setBombs()
 {
-   int row =  (int)(Math.random()*20);
-    int col= (int)(Math.random()*20);
+    for(int i =0 ; i<8 ; i++){
+    int row = (int)(Math.random()*20);
+    int col = (int)(Math.random()*20);
     if (!bombs.contains(buttons[row][col]))
         bombs.add(buttons[row][col]);
+}
 }
 
 public void draw ()
@@ -83,7 +85,18 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        
+        if(keyPressed == true)
+            marked = clicked;
+        if (marked ==false) {
+            clicked = false;
+        }
+        else if (bombs.contains(this)) {
+            text("hi", 200, 20);
+        }
+        else if(countBombs(r, c)>0)
+            label = countBombs(r, c);
+        else 
+            mousePressed();
 
     }
 
